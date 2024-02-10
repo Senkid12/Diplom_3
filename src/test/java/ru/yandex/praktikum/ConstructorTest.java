@@ -6,12 +6,16 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.praktikum.constants.SectionName;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 import static ru.yandex.praktikum.constants.SectionName.*;
 
 @RunWith(Parameterized.class)
 public class ConstructorTest extends BaseTest {
     private final SectionName sectionName;
+    private final List<String> ingredientsBurger = Arrays.asList("Булки", "Соусы", "Начинки");
 
     public ConstructorTest(SectionName sectionName) {
         this.sectionName = sectionName;
@@ -25,6 +29,7 @@ public class ConstructorTest extends BaseTest {
                 {FILLING}
         };
     }
+
     @Test
     @DisplayName("Переход по разделам Конструктора")
     public void clickSectionTest() {
@@ -32,6 +37,6 @@ public class ConstructorTest extends BaseTest {
 
         String actual = homePage.getClassName(sectionName);
 
-        assertTrue(actual.contains("tab_tab__1SPyG tab_tab_type_current__2BEPc pt-4 pr-10 pb-4 pl-10 noselect"));
+        assertTrue(ingredientsBurger.contains(actual));
     }
 }

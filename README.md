@@ -8,13 +8,21 @@ Selenium, Java11, Maven, Allure
 
 **Запустить тесты через Google Chrome:**
 
+```shell
 mvn clean test -Dbrowser=chrome allure:report
+```
+```shell
 mvn clean test -Dbrowser=chrome allure:serve
+```
 
 **Запустить тесты через Yandex Browser:**
 
+```shell
 mvn clean test -Dbrowser=yandex allure:report
+```
+```shell
 mvn clean test -Dbrowser=yandex allure:serve
+```
 
 ## **Техническое задание**
 Протестировать веб-приложение [Stellar Burgers](https://stellarburgers.nomoreparties.site/)

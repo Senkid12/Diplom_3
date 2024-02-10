@@ -1,9 +1,11 @@
 package ru.yandex.praktikum.pages.objects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.yandex.praktikum.constants.ButtonNameForConstructor;
+import ru.yandex.praktikum.model.User;
 
 import java.time.Duration;
 
@@ -20,28 +22,32 @@ public class UserPage {
         this.driver = driver;
     }
 
-    public UserPage waitLoadingPage() {
+    public void waitLoadingPage() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(driver -> (driver.findElement(profileButton).isEnabled()
         ));
-        return this;
     }
 
+    @Step("Получение поля с именем пользователя")
     public String getUserName() {
         return driver.findElements(allUserFields).get(0).getAttribute("value");
     }
 
+    @Step("Получение поля с логином пользователя")
     public String getUserLogin() {
         return driver.findElements(allUserFields).get(1).getAttribute("value");
     }
 
+    @Step("Клик по кнопке 'Конструктор'")
     public void clickConstructorButton() {
         driver.findElement(constructorButton).click();
     }
 
+    @Step("Клик по Логотипу сайта")
     public void clickLogo() {
         driver.findElement(logoButton).click();
     }
 
+    @Step("Клик по кнопке выход")
     public void clickExit() {
         driver.findElement(exitButton).click();
     }
@@ -55,5 +61,15 @@ public class UserPage {
                 clickLogo();
                 break;
         }
+    }
+
+    @Step("Переход в ЛК")
+    public void transitionToPersonalAccount(HomePage homePage, LoginPage loginPage, User user) {
+        homePage.clickPersonalAccount();
+        loginPage.waitLoadHeader();
+        loginPage.setEmailField(user.getEmail());
+        loginPage.setPassword(user.getPassword());
+        loginPage.clickButtonLogin();
+        homePage.clickPersonalAccount();
     }
 }

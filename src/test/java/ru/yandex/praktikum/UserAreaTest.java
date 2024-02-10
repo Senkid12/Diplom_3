@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UserAreaTest extends BaseTest{
+public class UserAreaTest extends BaseTest {
     @Test
     @DisplayName("Переход в Личный кабинет авторизованным пользователем")
     public void personalAreaButtonWithAuthUser() {
@@ -37,9 +37,9 @@ public class UserAreaTest extends BaseTest{
     private void LoginPersonalAccount() {
         homePage.clickPersonalAccount();
         loginPage.waitLoadHeader();
-                loginPage.setEmailField(user.getEmail());
-                loginPage.setPassword(user.getPassword());
-                loginPage.clickButtonLogin();
+        loginPage.setEmailField(user.getEmail());
+        loginPage.setPassword(user.getPassword());
+        loginPage.clickButtonLogin();
     }
 
     @Step("Переход в ЛК после авторизации")

@@ -1,6 +1,5 @@
 package ru.yandex.praktikum;
 
-import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +12,7 @@ import static ru.yandex.praktikum.constants.ButtonNameForConstructor.LOGO_STELLA
 
 @RunWith(Parameterized.class)
 public class PersonalConstructorTest extends BaseTest {
-    private ButtonNameForConstructor buttonName;
+    private final ButtonNameForConstructor buttonName;
 
     public PersonalConstructorTest(ButtonNameForConstructor buttonName) {
         this.buttonName = buttonName;
@@ -30,7 +29,7 @@ public class PersonalConstructorTest extends BaseTest {
     @Test
     @DisplayName("Переход из ЛК в Конструктор")
     public void transitionToConstructorFromLk() {
-        transitionToPersonalAccount();
+        userPage.transitionToPersonalAccount(homePage, loginPage, user);
 
         userPage.waitLoadingPage();
         userPage.changeButton(buttonName);
@@ -40,13 +39,5 @@ public class PersonalConstructorTest extends BaseTest {
         assertEquals(expectedUrl, webDriver.getCurrentUrl());
     }
 
-    @Step("Переход в ЛК")
-    private void transitionToPersonalAccount() {
-        homePage.clickPersonalAccount();
-        loginPage.waitLoadHeader();
-        loginPage.setEmailField(user.getEmail());
-        loginPage.setPassword(user.getPassword());
-        loginPage.clickButtonLogin();
-        homePage.clickPersonalAccount();
-    }
+
 }

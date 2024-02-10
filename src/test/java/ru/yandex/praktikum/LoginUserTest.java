@@ -6,13 +6,14 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.praktikum.constants.NameButtonsForLogin;
 
-import static ru.yandex.praktikum.constants.NameButtonsForLogin.*;
 import static org.junit.Assert.assertEquals;
+import static ru.yandex.praktikum.constants.NameButtonsForLogin.*;
 
 @RunWith(Parameterized.class)
 public class LoginUserTest extends BaseTest {
     private final NameButtonsForLogin nameButtonsForLogin;
-    public LoginUserTest (NameButtonsForLogin nameButtonsForLogin) {
+
+    public LoginUserTest(NameButtonsForLogin nameButtonsForLogin) {
         this.nameButtonsForLogin = nameButtonsForLogin;
     }
 

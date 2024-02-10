@@ -14,6 +14,7 @@ public class UserGenerator {
                 .name(faker.name().fullName())
                 .build();
     }
+
     public String getInvalidPassword() {
         return RandomStringUtils.randomAlphanumeric(5);
     }

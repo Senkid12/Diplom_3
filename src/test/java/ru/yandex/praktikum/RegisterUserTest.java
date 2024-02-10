@@ -1,21 +1,21 @@
 package ru.yandex.praktikum;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import ru.yandex.praktikum.model.User;
 import ru.yandex.praktikum.pages.objects.HomePage;
 import ru.yandex.praktikum.pages.objects.LoginPage;
 import ru.yandex.praktikum.pages.objects.RegisterPage;
 import ru.yandex.praktikum.service.UserGenerator;
 
-import static ru.yandex.praktikum.constants.Endpoints.*;
 import static org.junit.Assert.assertEquals;
+import static ru.yandex.praktikum.constants.Endpoints.BASE_URI;
+import static ru.yandex.praktikum.constants.Endpoints.ENDPOINT_FOR_LOGIN_USER;
 
-public class RegisterUserTest{
+public class RegisterUserTest {
     private WebDriver webDriver;
     public WebDriverFactory webDriverFactory = new WebDriverFactory();
     private String actual;
@@ -28,14 +28,12 @@ public class RegisterUserTest{
 
     @Before
     public void setUp() {
-//        WebDriverManager.chromedriver().setup();
         webDriver = webDriverFactory.getWebDriver();
         webDriver.get("https://stellarburgers.nomoreparties.site/register");
         user = userGenerator.getUser();
         registerPage = new RegisterPage(webDriver);
         loginPage = new LoginPage(webDriver);
         homePage = new HomePage(webDriver);
-
     }
 
     @Test

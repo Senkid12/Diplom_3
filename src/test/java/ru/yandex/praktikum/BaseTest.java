@@ -62,7 +62,7 @@ public class BaseTest {
                 .body(user).delete(BASE_URI + "/api/auth/user");
     }
 
-    public void selectButton(NameButtonsForLogin nameButtonsForLogin){
+    public void selectButton(NameButtonsForLogin nameButtonsForLogin) {
         switch (nameButtonsForLogin) {
             case LOGIN_ON_HOME_PAGE:
                 homePage.clickButtonLogin();

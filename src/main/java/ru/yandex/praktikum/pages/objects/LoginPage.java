@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 public class LoginPage {
     private final WebDriver driver;
@@ -20,11 +19,10 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public LoginPage waitLoadHeader() {
+    public void waitLoadHeader() {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(driver -> (driver.findElement(loginHeader).getText() != null
                 && !driver.findElement(loginHeader).getText().isEmpty()
         ));
-        return this;
     }
 
     public void clickButtonLogin() {
@@ -49,12 +47,10 @@ public class LoginPage {
 
     public void setEmailField(String email) {
         getEmailField().sendKeys(email);
-//        return this;
     }
 
     public void setPassword(String password) {
         getPasswordField().sendKeys(password);
-//        return this;
     }
 
 }
